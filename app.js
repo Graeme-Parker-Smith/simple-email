@@ -1,10 +1,9 @@
 const express = require('express');
-const app = express();
-
-const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
 const cors = require('cors');
 
+const app = express();
 
 // Serve static files from the React app
 app.use(cors());
@@ -43,26 +42,14 @@ app.post('/api/sendemail', (req, res) => {
 	console.log('sendemail request received.');
 	try {
 		console.log('req.body is: ', req.body);
-		const { firstName, lastName, email, phone, message, mornings, evenings } = req.body;
-		if (!message) throw 'could not send email';
-		let availability;
-		if (mornings && evenings) {
-			availability = 'Best time to reach me: mornings or evenings';
-		} else if (mornings) {
-			availability = 'Best time to reach me: mornings';
-		} else if (evenings) {
-			availability = 'Best time to reach me: evenings';
-		} else {
-			availability = '';
-		}
+		const { name, email, location, message } = req.body;
+		if (!name || !email || !location || !message) throw 'could not send email';
 		transporter.sendMail(
 			{
 				from: serverEmail,
 				to: mailTo,
 				subject: `New message from Website visitor`,
-				text: `From: ${firstName} ${lastName} \n \n message: ${message} \n \n email: ${email}  ${
-					phone ? ' \n \n phone number: ' + phone : ''
-				} ${availability ? '\n \n ' + availability : availability}`,
+				text: `Name: ${name} \n \n Email: ${email} \n \n location: ${location} \n \n message: ${message}`,
 			},
 			function (error, info) {
 				if (error) {
