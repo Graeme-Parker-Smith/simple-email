@@ -43,7 +43,7 @@ app.post('/api/sendemail', (req, res) => {
 		console.log('req.body is: ', req.body);
 		const { name, email, location, message } = req.body;
     if (!name || !email || !location || !message) throw 'could not send email';
-    if (location === "boerne") {
+    if (location === "Boerne") {
       mailTo = process.env.MAILTOB;
     }
 		transporter.sendMail(
