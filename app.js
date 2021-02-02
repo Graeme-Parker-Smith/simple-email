@@ -17,7 +17,6 @@ let localMailTo;
 // localMailOptions = require('./email').mailOptions;
 // localMailTo = require('./email').mailTo;
 const serverEmail = process.env.EMAIL || localMailOptions;
-let mailTo = process.env.MAILTOS || localMailTo;
 const transporter =
 	localTransporter ||
 	nodemailer.createTransport({
@@ -42,10 +41,15 @@ app.post('/api/sendemail', (req, res) => {
 	try {
 		console.log('req.body is: ', req.body);
 		const { name, email, location, message } = req.body;
-    if (!name || !email || !location || !message) throw 'could not send email';
-    if (location === "Boerne") {
-      mailTo = process.env.MAILTOB;
-    }
+		if (!name || !email || !location || !message) throw 'could not send email';
+		let mailTo;
+		if (location === 'Boerne') {
+			mailTo = process.env.MAILTOB;
+		} else if (location === 'San Antonio') {
+			mailTo = process.env.MAILTOS;
+		} else {
+			mailTo = localMailTo;
+		}
 		transporter.sendMail(
 			{
 				from: serverEmail,
