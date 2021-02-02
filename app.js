@@ -55,7 +55,7 @@ app.post('/api/sendemail', (req, res) => {
 				from: serverEmail,
 				to: mailTo,
 				subject: `New message from Website visitor`,
-				text: `Name: ${name} \n \n Email: ${email} \n \n location: ${location} \n \n message: ${message}`,
+				text: `Name: ${name} \n \n Email: ${email} \n \n Location: ${location} \n \n Message: ${message}`,
 			},
 			function (error, info) {
 				if (error) {
