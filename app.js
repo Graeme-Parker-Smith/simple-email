@@ -12,7 +12,7 @@ app.use(compression());
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'hair-pro/build')));
+app.use(express.static(path.join(__dirname, './fit')));
 
 // Put all API endpoints under '/api'
 let localTransporter;
