@@ -32,14 +32,10 @@ const transporter =
 		},
 	});
 
-app.get('/', function (req, res) {
-	res.send('hello World!');
-});
-
-app.get('/api/test', (req, res) => {
-	console.log('test route activated');
-	res.send('you got the test route');
-});
+// app.get('/api/test', (req, res) => {
+// 	console.log('test route activated');
+// 	res.send('you got the test route');
+// });
 
 app.post('/api/sendemail', (req, res) => {
 	console.log('sendemail request received.');
