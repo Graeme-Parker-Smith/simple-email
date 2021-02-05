@@ -7,7 +7,10 @@ const path = require('path');
 // const https = require("https")
 const env = process.env.NODE_ENV || 'development';
 
+const app = express();
+
 const forceSsl = function (req, res, next) {
+	console.log('FORCESSL FUNCTION HAS BEEN CALLED');
 	if (req.headers['x-forwarded-proto'] !== 'https') {
 		console.log('will redirect to https');
 		return res.redirect(['https://', req.get('Host'), req.url].join(''));
@@ -15,7 +18,13 @@ const forceSsl = function (req, res, next) {
 	return next();
 };
 
-const app = express();
+app.configure(function () {
+	if (env === 'production') {
+		app.use(forceSsl);
+	}
+
+	// other configurations etc for express go here...
+});
 
 // Serve static files
 app.use(compression());
@@ -84,12 +93,11 @@ app.post('/api/sendemail', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-	// console.log('ROOT ROUTE ACCESSED');
-	if (env === 'production') {
-		console.log('env is PRODUCTION');
-		// app.use(forceSsl);
-		forceSsl();
-	}
+	console.log('ROOT ROUTE ACCESSED');
+	// if (env === 'production') {
+	// 	console.log('env is PRODUCTION');
+	// 	app.use(forceSsl);
+	// }
 	res.sendFile(path.join(__dirname + '/fit/home.html'));
 	// res.redirect('https://www.specializedfit.com');
 });
