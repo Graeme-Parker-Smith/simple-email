@@ -72,6 +72,13 @@ app.post('/api/sendemail', (req, res) => {
 	}
 });
 
+app.get('*', function (req, res) {
+	res.redirect('https://www.specializedfit.com');
+
+	// Or, if you don't want to automatically detect the domain name from the request header, you can hard code it:
+	// res.redirect('https://example.com' + req.url);
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
 	console.log('Example app listening on port 3000!');
