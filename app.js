@@ -73,7 +73,8 @@ app.post('/api/sendemail', (req, res) => {
 	}
 });
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
+	console.log('ROOT ROUTE ACCESSED');
 	res.sendFile(path.join(__dirname + './fit/home.html'));
 	// res.redirect('https://www.specializedfit.com');
 });
