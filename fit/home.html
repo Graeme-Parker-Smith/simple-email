@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- displays site properly based on user's device -->
+		<meta name="description" content="Introduction for Specialized Fitness Inc." />
+		<meta name="keywords" content="HTML, CSS, JavaScript" />
+		<meta name="author" content="Graeme Parker Smith" />
+		<!-- <link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;700&display=swap"
+			rel="stylesheet"
+		/> -->
+		<!-- <link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap"
+			rel="stylesheet"
+		/> -->
+
+		<link rel="stylesheet" href="./app/scss/style.css" />
+		<script src="./app/js/modernizr.js"></script>
+		<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+
+		<title>Specialized Fitness Introduction Page</title>
+	</head>
+	<body>
+		<!-- image is wrapping header to make it show under transparent navbar -->
+		<div class="hero__image">
+			<header class="header">
+				<nav class="container container--pall flex flex-jc-sb -flex-ai-c">
+					<div class="header__links">
+						<a href="#locations">Locations</a>
+						<a href="#contact">Contact</a>
+					</div>
+				</nav>
+			</header>
+			<section class="hero">
+				<div class="container">
+					<picture>
+						<!-- 46kb -->
+						<source srcset="./images/SPECIALIZED+FITNESS+LOGO[1]2014.webp" type="image/webp" />
+						<!-- 121 kb -->
+						<img
+							class="hero__logo"
+							src="images/SPECIALIZED+FITNESS+LOGO[1]2014.png"
+							alt="personal trainer business logo"
+							width="300"
+							height="151"
+						/>
+					</picture>
+					<div class="hero__text container--pall">
+						<a href="#contact" class="button hero__cta">Contact Us</a>
+					</div>
+				</div>
+			</section>
+		</div>
+		<div class="page-gradient">
+			<section class="locations" id="locations">
+				<h1>Specialized Fitness Inc.</h1>
+				<h2>Locations</h2>
+				<div class="locations__container">
+					<div class="locations__item">
+						<h3>San Antonio</h3>
+						<picture>
+							<source srcset="./images/new-sanAntonio.webp" type="image/webp" />
+							<!-- 144kb img -->
+							<img src="images/new-sanAntonio.jpg" width="320" height="268" alt="San Antonio Location" />
+						</picture>
+						<div class="locations__item__info">
+							<p>Phone:</p>
+							<p>(210) 745 0700</p>
+							<p>Address:</p>
+							<p>
+								<span>210 E. Ramsey Rd.</span>
+								<span>San Antonio, Tx</span>
+								<span>78216</span>
+							</p>
+						</div>
+					</div>
+					<div class="locations__item">
+						<h3>Boerne</h3>
+						<picture>
+							<!-- 46kb -->
+							<source srcset="./images/location_boerne.webp" type="image/webp" />
+							<!-- 121 kb -->
+							<img src="images/location_boerne.JPG" width="320" height="248" alt="San Antonio Location" />
+						</picture>
+						<div class="locations__item__info">
+							<p>Phone:</p>
+							<p>(830) 755-4838</p>
+							<p>Address:</p>
+							<p>
+								<span>31007 I 10 West</span>
+								<span>Boerne, Tx.</span>
+								<span>78006</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="contact" id="contact">
+				<h2>Contact Us</h2>
+				<form id="contact__form" class="contact__form" action="http://localhost:3000/api/sendemail" method="post">
+					<label for="name">Your Name*</label><br />
+					<input class="contact__form__input" type="text" id="name" name="name" /><br />
+					<label for="email">Your Email*</label><br />
+					<input class="contact__form__input" type="email" id="email" name="email" /><br /><br />
+					<label class="contact__form__input__checkboxes">
+						Location*
+						<div class="pad-20 grid--4x4">
+							<!-- <div> -->
+							<label for="sanAntonio" class="pad-20">San Antonio</label>
+							<input
+								id="sanAntonio"
+								value="location-sanAntonio"
+								class="pad-20"
+								type="checkbox"
+								name="sanAntonio"
+							/>
+
+							<label for="boerne" class="pad-20">Boerne</label>
+							<input
+								id="boerne"
+								value="location-boerne"
+								class="pad-20"
+								type="checkbox"
+								name="boerne"
+							/>
+							<!-- </div> -->
+							<!-- <div> -->
+							<!-- </div> -->
+						</div>
+					</label>
+					<!-- <br />
+					<br /> -->
+					<label for="message">Your Message*</label><br />
+					<textarea class="contact__form__input" type="text" id="message" name="message"></textarea>
+					<input id="submitMsgBtn" class="contact__form__submit button" type="submit" value="Send" />
+				</form>
+			</section>
+		</div>
+
+		<footer class="footer">
+			<div class="footer__content">
+				<span class="footer__copyright">©2021 Specialized Fitness Inc.</span>
+
+				<div>
+					<span class="footer__social">
+						<a href="https://www.facebook.com/specializedfit/" rel="nofollow noreferrer">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+								<path
+									fill="#FFF"
+									d="M18.896 0H1.104C.494 0 0 .494 0 1.104v17.793C0 19.506.494 20 1.104 20h9.58v-7.745H8.076V9.237h2.606V7.01c0-2.583 1.578-3.99 3.883-3.99 1.104 0 2.052.082 2.329.119v2.7h-1.598c-1.254 0-1.496.597-1.496 1.47v1.928h2.989l-.39 3.018h-2.6V20h5.098c.608 0 1.102-.494 1.102-1.104V1.104C20 .494 19.506 0 18.896 0z"
+								/>
+							</svg>
+						</a>
+					</span>
+					<span class="footer__social">
+						<a href="http://linkedin.com/in/damian-cortez-538b071a4" rel="nofollow noreferrer">
+							<svg
+								role="img"
+								width="20"
+								height="20"
+								viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<title>LinkedIn icon</title>
+								<path
+									d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+								/>
+							</svg>
+						</a>
+					</span>
+				</div>
+				<!-- <p>Owned and managed by Damian Cortez</p>
+			<p>Designed and coded by Graeme Smith</p> -->
+			</div>
+		</footer>
+
+		<script src="./app/js/script.js"></script>
+	</body>
+</html>

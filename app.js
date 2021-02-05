@@ -1,13 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
 const cors = require('cors');
+const nodemailer = require('nodemailer');
+const compression = require('compression');
+const path = require('path');
 
 const app = express();
 
+// Serve static files
+app.use(compression());
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'hair-pro/build')));
+
 
 // Put all API endpoints under '/api'
 let localTransporter;
@@ -72,11 +78,8 @@ app.post('/api/sendemail', (req, res) => {
 	}
 });
 
-app.get('*', function (req, res) {
-	res.redirect('https://www.specializedfit.com');
-
-	// Or, if you don't want to automatically detect the domain name from the request header, you can hard code it:
-	// res.redirect('https://example.com' + req.url);
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname + '/hair-pro/build/index.html'));
 });
 
 const PORT = process.env.PORT || 3000;
