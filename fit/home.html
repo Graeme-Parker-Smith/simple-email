@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,6 +19,10 @@
 		/> -->
 
 		<link rel="stylesheet" href="./app/scss/style.css" />
+		<!-- if js enabled, remove no-js class from document -->
+		<script>
+			document.documentElement.classList.remove('no-js');
+		</script>
 		<script src="./app/js/modernizr.js"></script>
 		<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
 
@@ -102,7 +106,12 @@
 
 			<section class="contact" id="contact">
 				<h2>Contact Us</h2>
-				<form id="contact__form" class="contact__form" action="http://localhost:3000/api/sendemail" method="post">
+				<form
+					id="contact__form"
+					class="contact__form"
+					action="http://localhost:3000/api/sendemail"
+					method="post"
+				>
 					<label for="name">Your Name*</label><br />
 					<input class="contact__form__input" type="text" id="name" name="name" /><br />
 					<label for="email">Your Email*</label><br />
@@ -121,13 +130,7 @@
 							/>
 
 							<label for="boerne" class="pad-20">Boerne</label>
-							<input
-								id="boerne"
-								value="location-boerne"
-								class="pad-20"
-								type="checkbox"
-								name="boerne"
-							/>
+							<input id="boerne" value="location-boerne" class="pad-20" type="checkbox" name="boerne" />
 							<!-- </div> -->
 							<!-- <div> -->
 							<!-- </div> -->
@@ -148,7 +151,11 @@
 
 				<div>
 					<span class="footer__social">
-						<a href="https://www.facebook.com/specializedfit/" rel="nofollow noreferrer" aria-label="facebook">
+						<a
+							href="https://www.facebook.com/specializedfit/"
+							rel="nofollow noreferrer"
+							aria-label="facebook"
+						>
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
 								<path
 									fill="#FFF"
@@ -158,7 +165,11 @@
 						</a>
 					</span>
 					<span class="footer__social">
-						<a href="http://linkedin.com/in/damian-cortez-538b071a4" rel="nofollow noreferrer" aria-label="LinkedIn">
+						<a
+							href="http://linkedin.com/in/damian-cortez-538b071a4"
+							rel="nofollow noreferrer"
+							aria-label="LinkedIn"
+						>
 							<svg
 								role="img"
 								width="20"

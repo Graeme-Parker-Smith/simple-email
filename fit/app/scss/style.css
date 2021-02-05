@@ -321,6 +321,9 @@ button:hover::before,
 .webp .hero__image {
   background-image: url("../../images/barbell-640x426.webp");
 }
+.no-js .hero__image {
+  background-image: url("../../images/barbell-640x426.jpg");
+}
 @media (min-width: 64em) {
   .no-webp .hero__image {
     background-image: url("../../images/barbell-1920x1280.jpg");
