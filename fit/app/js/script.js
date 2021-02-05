@@ -19,7 +19,9 @@ boerneCheck.addEventListener('click', function () {
 	}
 });
 
+// ================================================================
 // moves focus to next input and prevents submit on enter key
+// ================================================================
 
 const name = document.getElementById('name');
 name.addEventListener('keypress', function (e) {
@@ -62,7 +64,7 @@ contactForm.addEventListener('submit', async function (e) {
 	});
 	// check do all inputs have a value?
 	const inputsAreFilled = name.value && email.value && message.value;
-	// const boxChecked = sanAntonio.checked || boerne.checked;
+	// Only one checkbox can be checked at a time
 	let location;
 	if (sanAntonio.checked && !boerne.checked) {
 		location = 'San Antonio';
@@ -74,7 +76,7 @@ contactForm.addEventListener('submit', async function (e) {
 
 	// if all input fields in form are completed, do this
 	if (inputsAreFilled && location) {
-		const url = 'https://fit-email.herokuapp.com/api/sendemail';
+		const url = 'https://specfithost.herokuapp.com/api/sendemail';
 		const options = {
 			method: 'POST',
 			headers: {
@@ -89,11 +91,15 @@ contactForm.addEventListener('submit', async function (e) {
 			}),
 		};
 
+		// Clears inputs after submit
+
 		name.value = null;
 		email.value = null;
 		sanAntonio.value = null;
 		boerne.value = null;
 		message.value = null;
+
+		// alert user if message send was successful or not
 
 		fetch(url, options).then((response) => {
 			if (response.status === 200) {

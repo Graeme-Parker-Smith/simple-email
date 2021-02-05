@@ -38,9 +38,9 @@ const transporter =
 // });
 
 app.post('/api/sendemail', (req, res) => {
-	console.log('sendemail request received.');
+	// console.log('sendemail request received.');
 	try {
-		console.log('req.body is: ', req.body);
+		// console.log('req.body is: ', req.body);
 		const { name, email, location, message } = req.body;
 		if (!name || !email || !location || !message) throw 'could not send email';
 		let mailTo;
@@ -62,24 +62,24 @@ app.post('/api/sendemail', (req, res) => {
 				if (error) {
 					return res.status(422).send({ error: 'could not send email' });
 				} else {
-					console.log('Email sent: ' + info.response);
+					// console.log('Email sent: ' + info.response);
 					return res.sendStatus(200);
 				}
 			}
 		);
 	} catch (err) {
-		console.log(err);
+		// console.log(err);
 		return res.status(422).send({ error: 'could not send email' });
 	}
 });
 
 app.get('/', (req, res) => {
-	console.log('ROOT ROUTE ACCESSED');
+	// console.log('ROOT ROUTE ACCESSED');
 	res.sendFile(path.join(__dirname + '/fit/home.html'));
 	// res.redirect('https://www.specializedfit.com');
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
-	console.log('Example app listening on port 3000!');
+	console.log(`Specialized Fitness running on port ${PORT}`);
 });
