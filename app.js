@@ -5,7 +5,6 @@ const nodemailer = require('nodemailer');
 const compression = require('compression');
 const path = require('path');
 // const https = require("https")
-const env = process.env.NODE_ENV || 'development';
 
 const app = express();
 
@@ -18,13 +17,11 @@ const forceSsl = function (req, res, next) {
 	return next();
 };
 
-app.configure(function () {
-	if (env === 'production') {
-		app.use(forceSsl);
-	}
-
-	// other configurations etc for express go here...
-});
+// other configurations etc for express go here...
+const env = process.env.NODE_ENV || 'development';
+if (env === 'production') {
+	app.use(forceSsl);
+}
 
 // Serve static files
 app.use(compression());
