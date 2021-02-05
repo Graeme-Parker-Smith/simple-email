@@ -4,22 +4,21 @@ const cors = require('cors');
 const nodemailer = require('nodemailer');
 const compression = require('compression');
 const path = require('path');
-// const https = require("https")
-
 const app = express();
 
+// middleware checks if incoming request doesn't have https header
+// if it doesn't, then redirect to https url
 const forceSsl = function (req, res, next) {
-	console.log('FORCESSL FUNCTION HAS BEEN CALLED');
 	if (req.headers['x-forwarded-proto'] !== 'https') {
-		console.log('will redirect to https');
 		return res.redirect(['https://', req.get('Host'), req.url].join(''));
 	}
 	return next();
 };
 
-// other configurations etc for express go here...
+// Is this server running in production or development mode?
 const env = process.env.NODE_ENV || 'development';
 if (env === 'production') {
+	// if server is in production mode, run this function
 	app.use(forceSsl);
 }
 
@@ -78,7 +77,6 @@ app.post('/api/sendemail', (req, res) => {
 				if (error) {
 					return res.status(422).send({ error: 'could not send email' });
 				} else {
-					// console.log('Email sent: ' + info.response);
 					return res.sendStatus(200);
 				}
 			}
@@ -90,13 +88,7 @@ app.post('/api/sendemail', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-	console.log('ROOT ROUTE ACCESSED');
-	// if (env === 'production') {
-	// 	console.log('env is PRODUCTION');
-	// 	app.use(forceSsl);
-	// }
 	res.sendFile(path.join(__dirname + '/fit/home.html'));
-	// res.redirect('https://www.specializedfit.com');
 });
 
 const PORT = process.env.PORT || 3000;
