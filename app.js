@@ -12,7 +12,7 @@ app.use(compression());
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, './fit')));
+app.use(express.static(path.join(__dirname, 'fit')));
 
 // Put all API endpoints under '/api'
 let localTransporter;
@@ -75,7 +75,7 @@ app.post('/api/sendemail', (req, res) => {
 
 app.get('/', (req, res) => {
 	console.log('ROOT ROUTE ACCESSED');
-	res.sendFile(path.join(__dirname + './fit/home.html'));
+	res.sendFile(path.join(__dirname + '/fit/home.html'));
 	// res.redirect('https://www.specializedfit.com');
 });
 
