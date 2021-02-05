@@ -43,14 +43,21 @@
 				<div class="container">
 					<picture>
 						<!-- 46kb -->
-						<source srcset="./images/SPECIALIZED+FITNESS+LOGO[1]2014.webp" type="image/webp" />
+						<source srcset="./images/smaller-logo.webp" type="image/webp" />
+						<source
+							media="(min-width:875px)"
+							srcset="./images/SPECIALIZED+FITNESS+LOGO[1]2014.webp"
+							type="image/webp"
+						/>
+						<source media="(max-width:875px)" srcset="./images/smaller-logo.jpg" type="image/jpg" />
 						<!-- 121 kb -->
 						<img
 							class="hero__logo"
-							src="images/SPECIALIZED+FITNESS+LOGO[1]2014.png"
+							src="./images/SPECIALIZED+FITNESS+LOGO[1]2014.png"
 							alt="personal trainer business logo"
 							width="300"
 							height="151"
+							type="image/png"
 						/>
 					</picture>
 					<div class="hero__text container--pall">

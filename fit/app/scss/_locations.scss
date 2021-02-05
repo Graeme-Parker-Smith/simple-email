@@ -2,19 +2,13 @@
     // background: linear-gradient(to bottom, $darkGreen, $turquoise);
     color: white;
     text-align: center;
-
     span {
         display: block;
     }
-
-    h1, h2 {
+    h1 {
         padding-top: 2.5rem;
         text-transform: uppercase;
     }
-  
-
-    
-
     &__container {
         display: flex;
         justify-content: space-around;
