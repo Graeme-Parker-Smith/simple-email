@@ -14,7 +14,6 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'hair-pro/build')));
 
-
 // Put all API endpoints under '/api'
 let localTransporter;
 let localMailOptions;
@@ -79,7 +78,7 @@ app.post('/api/sendemail', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname + '/hair-pro/build/index.html'));
+	res.sendFile(path.join(__dirname + './fit/home.html'));
 });
 
 const PORT = process.env.PORT || 3000;
