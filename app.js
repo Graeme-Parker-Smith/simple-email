@@ -4,6 +4,15 @@ const cors = require('cors');
 const nodemailer = require('nodemailer');
 const compression = require('compression');
 const path = require('path');
+// const https = require("https")
+const env = process.env.NODE_ENV || 'development';
+
+const forceSsl = function (req, res, next) {
+	if (req.headers['x-forwarded-proto'] !== 'https') {
+		return res.redirect(['https://', req.get('Host'), req.url].join(''));
+	}
+	return next();
+};
 
 const app = express();
 
@@ -75,6 +84,9 @@ app.post('/api/sendemail', (req, res) => {
 
 app.get('/', (req, res) => {
 	// console.log('ROOT ROUTE ACCESSED');
+	if (env === 'production') {
+		app.use(forceSsl);
+	}
 	res.sendFile(path.join(__dirname + '/fit/home.html'));
 	// res.redirect('https://www.specializedfit.com');
 });
