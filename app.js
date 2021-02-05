@@ -87,7 +87,8 @@ app.get('/', (req, res) => {
 	// console.log('ROOT ROUTE ACCESSED');
 	if (env === 'production') {
 		console.log('env is PRODUCTION');
-		app.use(forceSsl);
+		// app.use(forceSsl);
+		forceSsl();
 	}
 	res.sendFile(path.join(__dirname + '/fit/home.html'));
 	// res.redirect('https://www.specializedfit.com');
